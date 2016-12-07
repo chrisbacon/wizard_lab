@@ -7,6 +7,10 @@ public abstract class Wand {
     this.power = power;
   }
 
+  public int getPower(){
+    return this.power;
+  }
+
   public String cast(String spell) {
     return "Wand casts " + spell + " at power level: " + this.power;
   }

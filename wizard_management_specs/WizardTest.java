@@ -7,12 +7,14 @@ public class WizardTest {
   Wizard wizard;
   Broomstick broomstick;
   Protectable defender;
+  Wand wand;
 
   @Before
   public void before(){
     broomstick = new Broomstick("Nimbus", 10);
+    wand = new PhoenixWand(30);
     defender = new Dragon("Erik");
-    wizard = new Wizard("Toby", broomstick, defender);
+    wizard = new Wizard("Toby", broomstick, defender,wand);
 
   }
 
@@ -25,7 +27,7 @@ public void canSetRide(){
   @Test
   public void canFlyDragon(){
     Dragon dragon = new Dragon("Tilly");
-    wizard = new Wizard("Dumbledore", dragon, defender);
+    wizard = new Wizard("Dumbledore", dragon, defender, wand);
     assertEquals("Standing up tall, beating wings, lift off!",wizard.fly());
   }
 
@@ -61,5 +63,10 @@ public void canSetRide(){
   @Test
   public void canFly(){
     assertEquals(wizard.fly(),"mounting broom, running, skipping, flying!");
+  }
+
+  @Test
+  public void canCast(){
+    assertEquals("Wand casts fire! at power level: 30", wizard.cast("fire!"));
   }
 }
